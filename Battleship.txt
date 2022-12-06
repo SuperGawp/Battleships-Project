@@ -1,0 +1,61 @@
+ARYAN CHANDRA, SID:200461690
+ENSE352 Project - Battleships
+------------------------------------------------------------------------------------------------------------
+a) WHAT IS BATTLESHIP?
+
+Battleship (also known as Battleships or Sea Battle) is a strategy type guessing game for two players. 
+It is played on ruled grids (paper or board) on which each player's fleet of warships are marked. 
+The locations of the fleets are concealed from the other player. Players alternate turns calling "shots" at the other player's ships, 
+and the objective of the game is to destroy the opposing player's fleet. 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+b) HOW TO PLAY?
+
+The game is played on the NUCLEOF103RB board. With the correct wiring, a segment display, and a 4 way switch. 
+
+As soon as the game begins, the GREEN LED on the NUCLEO board is lit up, signifying that the game has begun. On the Seven Segment Display the
+following letters then pop up, 'E r', which then the user is able to input by using 4 bit knowledge of numbers from 0 to 15 we all know and love. 
+Flick the switches to show the respective number you want, which will be shown on the Seven Segment Display, and then press the blue USER button 
+on the NUCLEO board to input this number. 
+
+Next, 'E C' will pop up. If it is a hit, 'H' will show up on the display, if its a miss then 'n' will show up. 
+
+This process is then repeated until the game is over, which is easily shown by the display message on the seven segment display, 
+and the GREEN LED on the board turning off. 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+c) LEGEND FOR ALL OUTPUTS IN TABLE FORMAT
+
+1)	E r	->	This tells the user to enter which ROW they want to target.
+2)	E C	->	This tells the user to enter which COLUMN they want to target.
+3) 	n	-> 	This tells the user "NO HIT" meaning your shot missed on any of the inputted vessels.
+4)	H 	-> 	This tells the user "HIT" meaning your ship was hit on any of the inputted vessels.
+5)	H S	->	This tells the user "HIT SUNK" meaning a vessel was hit, and you hit it's final spot so therefore the ship has now sunk.
+6)	gg	-> 	This tells the user "GG" meaning GOOD GAME, this is shown when all the inputted vessels have been sunk, meaning the game is now over.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+d) THE PROBLEMS ENCOUNTERED
+
+The first problem which I had encountered was that my friend had borrowed my Seven Segment Display, I was more than happy to do this. However, this now resulted
+in me not having one. So I went to Dave and requested if he had another, he did but it was a common Anode. This wasn't a major issue as the inputs were just inverted
+and I had to connect it to GRD rather than power. 
+
+The second issue that I had encountered was during my segmentDisplay() function not returning and value. I spent a solid day on trying to figure this out, only to 
+later on realise the problem was that I was trying to do too much in that function for each segment display, which resulted in the code just bugging out. 
+If you were to look at the code now, it's rather simplified compared to before, with just a display*Number*() function, input = *number* and then return input;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+e) CONFIGURATION OPTIONS
+
+All configurations were borrowered and learnt from Lab 6, and by following the document available on UR Courses, RM0008-rev21.pdf
+
+RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN | RCC_APB2ENR_IOPCEN;	-> Powers all the ports A, B, and C. 
+
+The following is used for LEDs A, B, C, D, E, F, and G, for the Seven Segment Display:
+GPIOA->CRL |= GPIO_CRL_MODE0_0 | GPIO_CRL_MODE0_1 | 			//led a
+		GPIO_CRL_MODE1 	 | GPIO_CRL_MODE4   |			//led b and c
+		GPIO_CRL_MODE6_0 | GPIO_CRL_MODE6_1 |			//led d
+GPIOB->CRL |= GPIO_CRL_MODE0_0 | GPIO_CRL_MODE0_1; 			//led e
+		GPIO_CRL_MODE7_0 | GPIO_CRL_MODE7_1;			//led f
+GPIOA->CRH |= GPIO_CRH_MODE9_0 | GPIO_CRH_MODE9_1;			//led g
+GPIOA->CRH &= ~GPIO_CRH_CNF9_0 &~ GPIO_CRH_CNF9_1;
+
+Since my Seven Segment Display was common Anode, the following code was used to turn it off and on (just an example for LED A, code changes respective to their pin):
+ON	->	GPIOA->ODR &= (uint32_t) ~GPIO_ODR_ODR0;
+OFF	->	GPIOA->ODR |= GPIO_ODR_ODR0;

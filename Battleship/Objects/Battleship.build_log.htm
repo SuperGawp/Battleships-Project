@@ -1,0 +1,78 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Aryan Chandra, University of Regina, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.37.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+C:\Users\aryan\Desktop\ENSE 352 - Fundamentals of Computer Systems Architectures\Project\Battleship\Battleship.uvprojx
+Project File Date:  12/05/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+src/battleship.c(1): warning: In file included from...
+src/../include/battleship.h(11): warning: padding struct 'struct Vessel' with 3 bytes to align 'length' [-Wpadded]
+        unsigned int length;
+                     ^
+src/../include/battleship.h(8): warning: padding size of 'struct Vessel' with 3 bytes to alignment boundary [-Wpadded]
+struct Vessel {
+       ^
+src/battleship.c(29): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        int input = 0;
+            ^
+3 warnings generated.
+compiling battleship.c...
+linking...
+Program Size: Code=3740 RO-data=252 RW-data=0 ZI-data=2016  
+".\Objects\Battleship.axf" - 0 Error(s), 3 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.0.pack
+                Keil.STM32F1xx_DFP.2.4.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/Device/STM32F103RB
+  ./RTE/_Target_1
+  C:/Users/aryan/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  C:/Users/aryan/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
+      Source file:   Device/Source/system_stm32f10x.c
+Build Time Elapsed:  00:00:00
+</pre>
+</body>
+</html>
